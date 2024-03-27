@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="description">${product.description}</div>
             </div>`;
             listContainer.appendChild(productCard);
+            productCard.addEventListener('click', () =>  {
+                localStorage.setItem('productId', product.id);
+                window.location.href = './product_page.html';
+            })
         }});
 
 
