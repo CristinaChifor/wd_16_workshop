@@ -33,9 +33,8 @@ const categoryCssClasses = {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const listContainer = document.getElementById('products-container');
-    fetch('https://fakestoreapi.com/products')
-    .then(res=>res.json())
-    .then((products) => {
+    const products = getProducts();
+    
         for (const product of products) {
             const productCard = document.createElement('article');
             productCard.classList.add('col-2-md', 'm-2', 'card', 'cursor-pointer');
@@ -47,6 +46,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="description">${product.description}</div>
             </div>`;
             listContainer.appendChild(productCard);
-        }
-    });
-});
+        }});
+
+
+async function getProducts() {
+    const response = await fetch('https://fakestoreapi.com/products');
+    const products = await response.json();
+    return products;
+}
+
+
