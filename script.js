@@ -33,7 +33,7 @@ const categoryCssClasses = {
 
 document.addEventListener('DOMContentLoaded', async () => {
     const listContainer = document.getElementById('products-container');
-    const products = getProducts();
+    const products = await getProducts();
     
         for (const product of products) {
             const productCard = document.createElement('article');
