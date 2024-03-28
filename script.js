@@ -50,6 +50,7 @@ console.log('works');
                     <div class="description">${product.description}</div>
                 </div>`;
             listContainer.appendChild(productCard); 
+            productCard.addEventListener("click", () => {})
         }
     });
        
