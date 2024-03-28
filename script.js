@@ -33,13 +33,12 @@ const categoryCssClasses = {
 // obiectele sunt colectii de cheie: valoare
 console.log('works');
 
-document.addEventListener('DOMContentLoaded', async () => {
+    document.addEventListener('DOMContentLoaded', async () => {
 
     const listContainer = document.getElementById('products-container');
+    const products = await getProducts();
 
-    fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then((products) => {
+
             for (const product of products) {
                 const productCard = document.createElement('article');
                 productCard.classList.add('col-2-md','m-2','card','cursor-pointer');
@@ -50,8 +49,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <span class="badge rounded-pill ${categoryCssClasses[product.category]}">${product.category}</span>
                     <div class="description">${product.description}</div>
                 </div>`;
-            listContainer.appendChild(productCard); }
+            listContainer.appendChild(productCard); 
+        }
+    });
+       
+    async function getProducts() {
+        const response = await fetch('https://fakestoreapi.com/products');
+        const products = await response.json();
+        return products;
 
-            });
-        });
+    }
+
+
 
