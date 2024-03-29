@@ -6,5 +6,11 @@ document.addEventListener('DOMContentLoaded',
    const response = await fetch(`${BASE_URL}/products/${productId}`);
    const productData = await response.json();
    console.log(productData);
+   
+   const imageContainer = document.getElementById('img-container');
+   imageContainer.innerHTML = `<img src=${productData.image}>`;
   
+   const title = document.getElementById('product-title');
+   title.textContent = productData.title;
+   
 });
