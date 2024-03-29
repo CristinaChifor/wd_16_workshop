@@ -50,7 +50,10 @@ console.log('works');
                     <div class="description">${product.description}</div>
                 </div>`;
             listContainer.appendChild(productCard); 
-            productCard.addEventListener("click", () => {})
+            productCard.addEventListener("click", () => {
+                localStorage.setItem('productID', product.id);
+                window.location.href = './product_page.html';
+            })
         }
     });
        
@@ -58,7 +61,6 @@ console.log('works');
         const response = await fetch('https://fakestoreapi.com/products');
         const products = await response.json();
         return products;
-
     }
 
 
